@@ -20,4 +20,4 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
-bot.run('MTExMTIzOTA4MzI4OTc1MTYwMg.GTy14C.YLwhhAjt_EZiHdJPN7qwEM47W4akm0i5nchm3k')
+bot.run('Discord Token aqui')
