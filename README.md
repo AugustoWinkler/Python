@@ -1,2 +1,2 @@
 # Python
- Cursos e Projetos em Python
+ Cursos e Projetos em Python.
