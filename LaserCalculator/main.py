@@ -1,44 +1,116 @@
-#Calculadora de Custo Hora CNC Laser +  Materials
-
 from modulos import *
 from tkinter import *
 
-app=Tk()
+app = Tk()
 app.title("Calculadora Laser")
 app.geometry("720x486")
 app.configure(background="#dde")
 
+# Configuração comum para todos os LabelFrames
+label_frame_config = {
+    "borderwidth": 1,
+    "relief": "solid",
+    "labelanchor": N,
+    "padx": 10,
+    "pady": 10,
+}
 
-#Sessão da Máquina
-maquina = LabelFrame(app, text="Máquina", borderwidth=1,relief="solid",width=350,height=150).grid(row=1,column=1,columnspan=2,rowspan=3)
-#Preço da Máquina.
-maquinavalor = Label(maquina, text="Valor Máquina:").grid(row=1,column=1)
-maquinavaloren = Entry(maquina).grid(row=1,column=2)
-#Valor Residual da Máquina.
-residualvalor = Label(maquina, text="Valor Residual::").grid(row=2,column=1)
-residualvaloren = Entry(maquina).grid(row=2,column=2)
-#Vida Util da Máquina.
-vidautilmaquina = Label(maquina, text="Valor Máquina:").grid(row=3,column=1)
-vidautilmaquinaen = Entry(maquina).grid(row=3,column=2)
+# Tamanho comum para todos os LabelFrames
+frame_width = 300
+frame_height = 150
 
+# Sessão da Máquina
+maquina = LabelFrame(app, text="Máquina", width=frame_width, height=frame_height, **label_frame_config)
+maquina.grid(row=1, column=1, padx=5, pady=5, sticky="nsew")  # Usamos sticky para preencher toda a célula
 
-#Sessão do Laser
-laser = LabelFrame(app,text="Laser", borderwidth=1, relief="solid", width=350, height=150).place(y=200)
-valorlaser = Label(laser, text="Laser").grid(row=1,column=1)
-valorlaseren = Entry().grid(row=1,column=2)
+# Preço da Máquina.
+maquinavalor = Label(maquina, text="Valor Máquina:")
+maquinavalor.grid(row=1, column=1, padx=5, pady=5)
+maquinavaloren = Entry(maquina)
+maquinavaloren.grid(row=1, column=2, padx=5, pady=5)
 
+# Valor Residual da Máquina.
+residualvalor = Label(maquina, text="Valor Residual:")
+residualvalor.grid(row=2, column=1, padx=5, pady=5)
+residualvaloren = Entry(maquina)
+residualvaloren.grid(row=2, column=2, padx=5, pady=5)
 
+# Vida Útil da Máquina.
+vidautilmaquina = Label(maquina, text="Vida Útil:")
+vidautilmaquina.grid(row=3, column=1, padx=5, pady=5)
+vidautilmaquinaen = Entry(maquina)
+vidautilmaquinaen.grid(row=3, column=2, padx=5, pady=5)
 
-valor_Maquina = float(3000)
-valor_Residual = float(0)
-vida_UtilMaquina = int(10)
-custo_Laser = float(3000)
-vida_UtilLaser = int(8000)
-dias_Trabalhados = int(20)
-horas_DiasTrabalhados = int(8)
-despesas_Operacionais = float(200) #Consumo de Energia Elétrica,Custos Manutenção e Reparos,Aluguel, Outros..
-operador = float(2000)
+# Sessão do Laser
+laser = LabelFrame(app, text="Laser", width=frame_width, height=frame_height, **label_frame_config)
+laser.grid(row=4, column=1, padx=5, pady=5, sticky="nsew")  # Usamos sticky para preencher toda a célula
+
+# Valor Laser.
+valorlaser = Label(laser, text="Valor Laser:")
+valorlaser.grid(row=1, column=1, padx=5, pady=5)
+valorlaseren = Entry(laser)
+valorlaseren.grid(row=1, column=2, padx=5, pady=5)
+
+# Vida Útil do Laser.
+vidalaser = Label(laser, text="Vida Útil:")
+vidalaser.grid(row=2, column=1, padx=5, pady=5)
+vidalaseren = Entry(laser)
+vidalaseren.grid(row=2, column=2, padx=5, pady=5)
+
+# Dias de Trabalho
+funcionamento = LabelFrame(app, text="Carga Horária", width=frame_width, height=frame_height, **label_frame_config)
+funcionamento.grid(row=7, column=1, padx=5, pady=5, sticky="nsew")  # Usamos sticky para preencher toda a célula
+
+# Dias de Trabalho.
+diaTrabalho = Label(funcionamento, text="Dias de Trabalho:")
+diaTrabalho.grid(row=1, column=1, padx=5, pady=5)
+diaTrabalhoen = Entry(funcionamento)
+diaTrabalhoen.grid(row=1, column=2, padx=5, pady=5)
+
+# Horas Diárias.
+horasDia = Label(funcionamento, text="Horas Diárias:")
+horasDia.grid(row=2, column=1, padx=5, pady=5)
+horasDiaen = Entry(funcionamento)
+horasDiaen.grid(row=2, column=2, padx=5, pady=5)
+
+# Material Custo
+material = LabelFrame(app, text="Material", width=frame_width, height=frame_height, **label_frame_config)
+material.grid(row=1, column=3, padx=5, pady=5, rowspan=3, columnspan=3, sticky="nsew")  # Usamos sticky para preencher toda a célula
+
+# Material.
+tipomaterial = Label(material, text="Material:")
+tipomaterial.grid(row=1, column=1, padx=5, pady=5)
+tipomaterialen = Entry(material)
+tipomaterialen.grid(row=1, column=2, padx=5, pady=5)
+
+# Preço do Material.
+valormaterial = Label(material, text="Preço:")
+valormaterial.grid(row=2, column=1, padx=5, pady=5)
+valormaterialen = Entry(material)
+valormaterialen.grid(row=2, column=2, padx=5, pady=5)
+
+# Quantidade de Material.
+quantidadematerial = Label(material, text="Quantidade:")
+quantidadematerial.grid(row=3, column=1, padx=5, pady=5)
+quantidadematerialen = Entry(material)
+quantidadematerialen.grid(row=3, column=2, padx=5, pady=5)
+
+# Despesas Operacionais
+despesas = LabelFrame(app, text="Despesas Operacionais", width=frame_width, height=frame_height, **label_frame_config)
+despesas.grid(row=4, column=3, padx=5, pady=5, rowspan=2, columnspan=2, sticky="nsew")  # Usamos sticky para preencher toda a célula
+
+# Despesas Operacionais.
+despesasOperacionais = Label(despesas, text="Despesas Operacionais")
+despesasOperacionais.grid(row=1, column=1, padx=5, pady=5)
+despesasOperacionaisen = Entry(despesas)
+despesasOperacionaisen.grid(row=1, column=2, padx=5, pady=5)
+
+# Custo do Operador.
+custoOperador = Label(despesas, text="Custo do Operador")
+custoOperador.grid(row=2, column=1, padx=5, pady=5)
+custoOperadoren = Entry(despesas)
+custoOperadoren.grid(row=2, column=2, padx=5, pady=5)
+
+# Restante do seu código
 
 app.mainloop()
-
-
