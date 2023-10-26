@@ -3,10 +3,6 @@ def despesas_Mensais():
     despesas = despesas_Operacionais/dias_Trabalhados
     return despesas
 
-def teste(x,b):
-    despesas = x/b
-    return despesas
-
 def hora_Maquina():
     preco_HoraMaquina = (mao_de_Obra()+hora_Laser()+Depreciacao_Anual()+despesas_Mensais())/tempo_Trabalhado()
     return preco_HoraMaquina
