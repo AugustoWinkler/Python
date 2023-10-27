@@ -23,7 +23,3 @@ def hora_Laser(custo_Laser,vida_UtilLaser):
 def Depreciacao_Anual():
     depreciacao = (valor_Maquina - valor_Residual)/vida_UtilMaquina
     return depreciacao
-
-def Calcular_Hora_Maquina():
-    hora = 0
-    return hora
