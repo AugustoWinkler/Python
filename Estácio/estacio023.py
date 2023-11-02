@@ -12,5 +12,5 @@ visao[0] = "Nelson"
 print(nomes)
 print(visao)
 
-for indice,valor in enumerate(nomes):
+for indice,valor in enumerate(nomes):  
     print(indice,valor)
