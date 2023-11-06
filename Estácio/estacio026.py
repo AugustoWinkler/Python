@@ -1,7 +1,7 @@
 def trocar(seq,i):
     aux=seq[i]
-    seq[i]=seq[i+1]
-    seq[+1]=aux
+    seq[i] = seq[i+1]
+    seq[i+1] = aux
 seq = [1,15,22,6,7,19,8,3,5,20]
 troca=1
 while troca:
