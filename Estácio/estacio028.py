@@ -5,5 +5,5 @@ print(nomes)
 def insereL(k,L,n):
     L.append('')
     L[n]=k
-    n++
+
 
